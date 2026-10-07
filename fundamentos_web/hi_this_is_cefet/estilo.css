@@ -1,0 +1,386 @@
+:root {
+   --cinza-claro: rgb(244, 244, 244);
+    --cinza-escuro: rgb(57,59,66);
+    --cinza-chumbo-fonte: rgb(71,71,71);
+    --azul-claro: rgb(118,178,208);
+    --verde-limao: rgb(181,211,86);
+    --rosa: rgb(196,72,97);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--cinza-chumbo-fonte);
+}
+
+.header{
+    min-height: 450px;
+    color: white;
+    text-align: center;
+    background-image: linear-gradient(
+        rgba(20,30,40,0.50),
+        rgba(20,30,40,0.50)),
+        url("testes/img/bokeh_car_lights_bg.jpg.jpg");
+        background-size: cover;
+        background-position: center;
+}
+
+.menu{
+    display:  flex;
+    justify-content:  space-between;
+    align-items: center;
+    padding: 15px 30px;
+}
+
+.logo{
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.menu-navegacao ul,
+.cards,
+.pessoas,
+.footer-conteudo,
+.footer-bottom {
+    display: flex;
+}
+
+.menu-navegacao ul {
+    list-style: none;
+    gap: 5px;
+}
+
+.menu-navegacao a {
+    display: block;
+    padding: 7px 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 8px;
+    transition: .3s;
+}
+
+.menu-navegacao a:hover {
+    transform: translateY(-2px);
+}
+
+.menu-navegacao li:last-child a {
+    background-color: white;
+    color: var(--cinza-chumbo-fonte);
+    border-radius: 20px;
+    padding: 6px 12px;
+}
+
+.menu-navegacao li:last-child a:hover {
+    background-color: var(--azul-claro);
+    color: white;
+}
+
+.hero {
+    min-height: 390px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 9px;
+    margin-bottom: 12px;
+}
+
+.hero p {
+    font-size: 24px;
+    margin-bottom: 18px;
+}
+
+.botao {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--azul-claro);
+    color: white;
+    text-decoration: none;
+    font-size: 8px;
+    border-radius: 20px;
+    transition: .3s;
+}
+
+.botao:hover {
+    background-color: var(--rosa);
+    transform: translateY(-3px);
+}
+
+.primeira-secao {
+    background-color: var(--cinza-claro);
+    padding: 55px 20x 60x;
+    text-align: center;
+}
+
+.titulo-secao {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.titulo-secao h2 {
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.titulo-secao p{
+    font-size: 8px;
+    color: #888;
+}
+
+.card {
+    width: 250px;
+    padding: 20px 15px;
+    background-color: white;
+    border: 1px solid #ddd;
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 8px 20px rgba(0,0,0,.12);
+}
+
+.icone {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.icone.azul {
+    background-color: var(--azul-claro);
+}
+
+.icone.verde {
+    background-color: var(--verde-limao);
+}
+
+.icone.vermelho {
+    background-color: var(--rosa);
+}
+
+.icone i {
+    font-size: 18px;   
+}
+
+.card h3 {
+    font-size: 10px;
+    margin-bottom: 12px;
+}
+
+.card p,
+.texto-secao p {
+    font-size: 7px;
+    line-height: 1.8;
+    color: #777;
+}
+
+.segunda-secao {
+    padding: 35px 20px 70px;
+    text-align: center;
+}
+
+.segunda-secao .titulo-secao {
+    margin-bottom: 25px;
+}
+
+.pessoas {
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 900x;
+    margin: auto;
+    padding: 15px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.pessoa {
+    display: flex;
+    align-items: center;
+    width: 25%;
+    text-align: left;
+}
+
+.foto-pessoa {
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
+    overflow: hidden;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.foto-pessoa img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.info-pessoa h4 {
+    font-size: 7px;
+    margin-bottom: 3px;
+}
+
+.info-pessoa p {
+    font-size: 6px;
+    color: #888;
+}
+
+.texto-secao {
+    max-width: 650px;
+    margin: 25px auto 0;
+}
+
+.texto-secao p {
+    margin-bottom: 18px;
+}
+
+.footer {
+    background-color: var(--cinza-escuro);
+    color: white;
+    padding: 50px 20px 25px;
+}
+
+.footer-conteudo {
+    justify-content: space-between;
+    gap: 30px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.footer-coluna {
+    width: 25%;
+}
+
+.footer-coluna h3 {
+    font-size:  7px;
+    margin-bottom: 12px;
+}
+
+.footer-coluna p {
+    font-size: 6px;
+    line-height: 1.8;
+    color: #bbb;
+}
+
+.footer-bottom {
+    justify-content: space-between;
+    align-items: center;
+    max-width: 900px;
+    margin: 30px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,.08);
+}
+
+.creditos {
+    font-size: 6px;
+    color: #999;
+}
+
+.redes-sociais a {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.redes-sociais a:hover {
+    transform: translateY(-3px);
+    opacity: .8;
+}
+
+.social-facebook { 
+    background: #4267B2; 
+}
+
+.social-twitter { 
+    background: #1DA1F2; 
+}
+
+.social-google { 
+    background: var(--rosa); 
+}
+
+.social-linkedin { 
+    background: #0077B5;
+}
+
+@media (max-width: 700px) {
+
+    .menu,
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu {
+        gap: 15px;
+    }
+
+    .menu-navegacao {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .card {
+        width: 90%;
+        max-width: 300px;
+    }
+
+    .pessoas {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .pessoa {
+        width: 25%;
+    }
+
+    .foto-pessoa {
+        width: 30px;
+        height: 30px;
+    }
+
+    .foto-pessoa img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .footer-conteudo {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .footer-coluna {
+        width: 25%;
+    }
+
+    .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
