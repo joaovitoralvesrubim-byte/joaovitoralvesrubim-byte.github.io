@@ -1,0 +1,404 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #fff;
+}
+
+header {
+    background-color: rgb(32, 21, 2);
+    color: white;
+    text-align: center;
+    padding-top: 85px;
+    padding-bottom: 50px;
+}
+
+header h1 {
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+header p {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #aaa;
+}
+
+header nav {
+    margin-top: 40px;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+}
+
+header nav ul li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding: 14px 18px;
+    transition:
+        background-color 0.3s ease,
+        transform 0.2s ease,
+        color 0.3s ease;
+}
+
+
+/* Efeito ao passar o mouse */
+
+header nav ul li a:hover {
+    background-color: rgb(203, 45, 82);
+    transform: translateY(-3px);
+    color: white;
+}
+
+
+/* Efeito ao clicar */
+
+header nav ul li a:active {
+    transform: translateY(1px);
+    background-color: rgb(170, 30, 65);
+}
+
+
+/* Item atualmente selecionado */
+
+header nav ul li a.ativo {
+    background-color: rgb(203, 45, 82);
+}
+
+main {
+    background-color: white;
+}
+
+.fundo-Laranja,
+.fundo.laranja {
+    background-color: rgb(229, 82, 38);
+    color: #000;
+    text-align: center;
+    padding: 70px 20px;
+}
+
+.fundo-Laranja h2,
+.fundo.laranja h2 {
+    font-size: 26px;
+    margin-bottom: 28px;
+}
+
+.fundo-Laranja p,
+.fundo.laranja p {
+    max-width: 700px;
+    margin: auto;
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+.fonte-grande {
+    max-width: 1000px;
+    margin: auto;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 55px;
+
+    text-align: center;
+
+    padding: 65px 10% 75px;
+}
+
+.fonte-grande article {
+    width: 30%;
+    text-align: center;
+
+    border: none;
+
+    padding: 10px;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* Movimento do card */
+
+.fonte-grande article:hover {
+    transform: translateY(-8px);
+}
+
+
+/* Ícones */
+
+.fonte-grande article i {
+    display: block;
+
+    color: rgb(115, 50, 5);
+
+    margin-bottom: 35px;
+
+    font-size: 45px;
+
+    transition:
+        transform 0.3s ease,
+        color 0.3s ease;
+}
+
+
+/* Animação do ícone */
+
+.fonte-grande article:hover i {
+    transform: scale(1.15);
+    color: rgb(203, 45, 82);
+}
+
+
+/* Títulos */
+
+.fonte-grande article h3 {
+    font-size: 15px;
+    letter-spacing: 1px;
+
+    margin-bottom: 25px;
+}
+
+
+/* Texto */
+
+.fonte-grande article p {
+    font-size: 11px;
+    line-height: 1.8;
+
+    color: #555;
+
+    margin-bottom: 30px;
+}
+
+.fonte-grande article a,
+main section:last-child article a {
+    display: inline-block;
+
+    background-color: rgb(203, 45, 82);
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 10px;
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    padding: 14px 22px;
+    transition:
+        background-color 0.3s ease,
+        transform 0.2s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* Hover */
+
+.fonte-grande article a:hover,
+main section:last-child article a:hover {
+    background-color: rgb(170, 30, 65);
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Clique */
+
+.fonte-grande article a:active,
+main section:last-child article a:active {
+    transform: translateY(1px);
+
+    box-shadow: none;
+}
+
+.segunda-secao {
+    text-align: center;
+
+    padding: 0 8% 70px;
+}
+
+.segunda-secao > h2 {
+    font-size: 25px;
+
+    margin-bottom: 5px;
+}
+
+.segunda-secao .subtitulo {
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color: #777;
+
+    margin-bottom: 35px;
+}
+
+.cards-inferiores {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 25px;
+}
+
+.cards-inferiores article {
+    width: 220px;
+
+    text-align: center;
+}
+
+.cards-inferiores h3 {
+    font-size: 0;
+
+    margin-bottom: 20px;
+}
+
+.cards-inferiores p {
+    font-size: 10px;
+
+    line-height: 1.8;
+
+    color: #777;
+
+    margin-bottom: 25px;
+}
+
+footer {
+    background-color: rgb(32, 21, 2);
+
+    color: white;
+
+    text-align: center;
+
+    padding: 90px 20px;
+}
+
+
+/* Frase do footer */
+
+footer .frase-footer {
+    font-size: 2px;
+
+    letter-spacing: 2px;
+
+    color: #888;
+
+    margin-bottom: 45px;
+}
+
+
+/* Redes sociais */
+
+footer nav ul {
+    list-style: none;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 16px;
+}
+
+footer nav ul li {
+    transition: transform 0.3s ease;
+}
+
+footer nav ul li:hover {
+    transform: translateY(-3px);
+}
+
+footer nav a {
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 16px;
+
+    transition:
+        color 0.3s ease;
+}
+
+footer nav li:hover a {
+    color: rgb(203, 45, 82);
+}
+
+
+/* Linha */
+
+footer hr {
+    border: none;
+
+    border-top: 1px solid rgb(55, 40, 25);
+
+    margin: 45px auto;
+
+    width: 65%;
+}
+
+
+/* Créditos */
+
+footer .creditos {
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    color: #777;
+}
+
+@media (max-width: 700px) {
+
+    header nav ul {
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+    header nav ul li a {
+        width: 200px;
+    }
+
+    .fonte-grande {
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 40px;
+    }
+
+    .fonte-grande article {
+        width: 80%;
+    }
+
+    .cards-inferiores {
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+    .cards-inferiores article {
+        width: 80%;
+    }
+
+    .fundo-Laranja,
+    .fundo.laranja {
+        padding: 60px 10%;
+    }
+}
