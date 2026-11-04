@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Catálogo de filmes">
+  <title>Catálogo de Filmes e Séries</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="cabecalho">
+    <div class="cabecalho__conteudo">
+      <p class="cabecalho__disciplina">Laboratório de JavaScript</p>
+      <h1>Catálogo de Filmes e Séries</h1>
+    </div>
+  </header>
+
+  <main class="conteudo-principal">
+    <p id="mensagem-status" class="mensagem-status" role="status" aria-live="polite">
+      Carregando catálogo...
+    </p>
+
+    <section id="catalogo" class="catalogo" aria-label="Lista de filmes e séries"></section>
+  </main>
+
+  <footer class="rodape">
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
