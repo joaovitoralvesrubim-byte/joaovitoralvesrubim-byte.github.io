@@ -1,0 +1,186 @@
+const catalogo = document.querySelector("#catalogo");
+const mensagemStatus = document.querySelector("#mensagem-status");
+
+// Converte caracteres especiais para texto seguro antes de inseri-los no HTML.
+function escaparHTML(texto) {
+  const elementoTemporario = document.createElement("div");
+  elementoTemporario.textContent = texto == null ? "" : String(texto);
+  return elementoTemporario.innerHTML;
+}
+
+// A média das notas das opiniões é a nota mostrada no topo do cartão.
+function calcularMediaDasOpinioes(opinioes) {
+  if (!opinioes || opinioes.length === 0) {
+    return 0;
+  }
+
+  let somaDasNotas = 0;
+
+  opinioes.forEach(function (opiniao) {
+    somaDasNotas += Number(opiniao.rating) || 0;
+  });
+
+  return somaDasNotas / opinioes.length;
+}
+
+// Produz até cinco estrelas preenchidas e completa o restante com estrelas vazias.
+function criarEstrelas(nota) {
+  const quantidadeDeEstrelas = Math.max(0, Math.min(5, Math.round(nota)));
+  let estrelas = "";
+
+  [1, 2, 3, 4, 5].forEach(function (indice) {
+    estrelas += indice <= quantidadeDeEstrelas ? "★" : "☆";
+  });
+
+  return estrelas;
+}
+
+// Segue exatamente os intervalos do desafio.
+// Como o valor 18 não pertence a nenhum intervalo do enunciado, ele fica neutro.
+function descobrirClasseDaFaixaEtaria(classificacao) {
+  const idade = Number(classificacao);
+
+  if (idade >= 0 && idade <= 14) {
+    return "faixa-verde";
+  }
+
+  if (idade > 14 && idade < 18) {
+    return "faixa-amarela";
+  }
+
+  if (idade > 18) {
+    return "faixa-vermelha";
+  }
+
+  if (idade === 18) {
+    return "faixa-18";
+  }
+
+  return "faixa-sem-classificacao";
+}
+
+function criarGeneros(generos) {
+  if (!generos || generos.length === 0) {
+    return "<li>Gênero não informado</li>";
+  }
+
+  let itens = "";
+
+  generos.forEach(function (genero) {
+    itens += "<li>" + escaparHTML(genero) + "</li>";
+  });
+
+  return itens;
+}
+
+// titulosSemelhantes guarda IDs. Aqui os IDs são trocados pelos títulos reais.
+function criarTitulosSemelhantes(idsSemelhantes, filmesPorId) {
+  if (!idsSemelhantes || idsSemelhantes.length === 0) {
+    return "<p class=\"texto-vazio\">Não há títulos semelhantes informados.</p>";
+  }
+
+  let itens = "";
+
+  idsSemelhantes.forEach(function (idSemelhante) {
+    const filmeSemelhante = filmesPorId[idSemelhante];
+
+    if (filmeSemelhante) {
+      itens += "<li>" + escaparHTML(filmeSemelhante.titulo) + "</li>";
+    }
+  });
+
+  if (itens === "") {
+    return "<p class=\"texto-vazio\">Não há títulos semelhantes informados.</p>";
+  }
+
+  return "<ul class=\"lista-semelhantes\">" + itens + "</ul>";
+}
+
+function criarOpinioes(opinioes) {
+  if (!opinioes || opinioes.length === 0) {
+    return "<p class=\"texto-vazio\">Ainda não há opiniões.</p>";
+  }
+
+  let itens = "";
+
+  opinioes.forEach(function (opiniao) {
+    const nota = Number(opiniao.rating) || 0;
+
+    itens += "<li class=\"opiniao\">" +
+      "<div class=\"opiniao__nota\" aria-label=\"Nota " + nota + " de 5\">" + criarEstrelas(nota) + "</div>" +
+      "<p>" + escaparHTML(opiniao.descricao) + "</p>" +
+       "</li>";
+  });
+
+  return "<ul class=\"lista-opinioes\">" + itens + "</ul>";
+}
+
+// Esta função monta uma ficha de apresentação para um único filme ou série.
+function preencherFicha(filme, filmesPorId) {
+  const cartao = document.createElement("article");
+  const opinioes = filme.opinioes || [];
+  const notaMedia = calcularMediaDasOpinioes(opinioes);
+  const classificacao = filme.classificacao == null ? "?" : filme.classificacao;
+  const elenco = filme.elenco && filme.elenco.length > 0
+    ? escaparHTML(filme.elenco.join(", "))
+    : "Não informado";
+
+  cartao.className = "cartao-filme";
+  cartao.innerHTML =
+    "<div class=\"cartao-filme__topo\">" +
+      "<img class=\"cartao-filme__imagem\" src=\"" + escaparHTML(filme.figura) + "\" alt=\"Capa de " + escaparHTML(filme.titulo) + "\">" +
+      "<span class=\"faixa-etaria " + descobrirClasseDaFaixaEtaria(classificacao) + "\" aria-label=\"Classificação etária: " + escaparHTML(classificacao) + "\">" + escaparHTML(classificacao) + "</span>" +
+    "</div>" +
+    "<div class=\"cartao-filme__conteudo\">" +
+      "<h2>" + escaparHTML(filme.titulo) + "</h2>" +
+      "<div class=\"avaliacao\">" +
+        "<span class=\"avaliacao__estrelas\" aria-label=\"Média: " + notaMedia.toFixed(1) + " de 5 estrelas\">" + criarEstrelas(notaMedia) + "</span>" +
+        "<span class=\"avaliacao__texto\">Média " + notaMedia.toFixed(1) + "/5</span>" +
+      "</div>" +
+      "<ul class=\"generos\">" + criarGeneros(filme.generos) + "</ul>" +
+      "<p class=\"resumo\">" + escaparHTML(filme.resumo) + "</p>" +
+      "<section class=\"bloco-info\">" +
+        "<h3>Elenco</h3>" +
+        "<p>" + elenco + "</p>" +
+      "</section>" +
+      "<section class=\"bloco-info\">" +
+        "<h3>Títulos semelhantes</h3>" +
+        criarTitulosSemelhantes(filme.titulosSemelhantes, filmesPorId) +
+      "</section>" +
+      "<section class=\"bloco-info\">" +
+        "<h3>Opiniões</h3>" +
+        criarOpinioes(opinioes) +
+      "</section>" +
+    "</div>";
+
+  return cartao;
+}
+
+function preencherCatalogo(filmes) {
+  const filmesPorId = {};
+  const fragmento = document.createDocumentFragment();
+
+  // Primeiro cria um índice para localizar os títulos semelhantes pelo ID.
+  filmes.forEach(function (filme) {
+    filmesPorId[filme.id] = filme;
+  });
+
+  // Depois cria e adiciona cada ficha à página.
+  filmes.forEach(function (filme, indice) {
+    const ficha = preencherFicha(filme, filmesPorId);
+    ficha.style.animationDelay = indice * 60 + "ms";
+    fragmento.appendChild(ficha);
+  });
+
+  catalogo.innerHTML = "";
+  catalogo.appendChild(fragmento);
+}
+
+// A constante filmes foi criada no arquivo data.js, carregado antes deste script.
+function carregarFilmes() {
+  console.log("Dados recebidos de data.js:", filmes);
+  preencherCatalogo(filmes);
+  mensagemStatus.textContent = filmes.length + " títulos carregados com sucesso.";
+}
+
+carregarFilmes();
