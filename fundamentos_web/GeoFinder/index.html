@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Consulta de países usando a REST Countries API.">
+  <title>GeoFinder - Consulta de Países</title>
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+  <header class="cabecalho">
+    <p class="cabecalho__rotulo">Aplicação Web</p>
+    <h1>🌍 GeoFinder</h1>
+    <p>Consulte países, regiões e dados geográficos do mundo.</p>
+  </header>
+
+  <main class="conteudo-principal">
+    <section id="controles" class="controles" aria-label="Filtros e ordenação">
+      <input id="campoBusca" type="search" placeholder="Buscar país pelo nome" autocomplete="off">
+
+      <select id="filtroRegiao" aria-label="Filtrar por região">
+        <option value="">Todas as regiões</option>
+        <option value="Africa">África</option>
+        <option value="Americas">Américas</option>
+        <option value="Asia">Ásia</option>
+        <option value="Europe">Europa</option>
+        <option value="Oceania">Oceania</option>
+        <option value="Antarctic">Antártida</option>
+      </select>
+
+      <div class="ordenacao" aria-label="Ordenar países">
+        <span>Ordenar por:</span>
+        <button id="ordenarNome" type="button">Nome</button>
+        <button id="ordenarPopulacao" type="button">População</button>
+        <button id="ordenarArea" type="button">Área</button>
+      </div>
+    </section>
+
+    <p id="mensagemStatus" class="mensagem-status" role="status" aria-live="polite">Carregando países...</p>
+
+    <section id="listaPaises" class="lista-paises" aria-label="Lista de países"></section>
+    <section id="estatisticas" class="estatisticas" aria-live="polite"></section>
+  </main>
+
+  <dialog id="modalDetalhes" class="modal-detalhes">
+    <button id="fecharDetalhes" class="botao-fechar" type="button" aria-label="Fechar detalhes">×</button>
+    <div id="conteudoDetalhes"></div>
+  </dialog>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
