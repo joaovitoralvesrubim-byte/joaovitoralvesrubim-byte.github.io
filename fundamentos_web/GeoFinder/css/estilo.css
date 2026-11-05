@@ -1,0 +1,147 @@
+/* CONFIGURAÇÕES GERAIS */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #eef4f8;
+    color: #23313e;
+    font-family: Arial, sans-serif;
+}
+
+/* CABEÇALHO */
+.cabecalho {
+    padding: 30px;
+    background: #2769a7;
+    color: white;
+    text-align: center;
+}
+
+.cabecalho h1 {
+    margin: 5px;
+}
+
+/* CONTEÚDO */
+.conteudo-principal {
+    max-width: 1180px;
+    margin: auto;
+    padding: 25px 20px;
+}
+
+/* BUSCA E FILTROS */
+.controles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input, select, button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+#campoBusca {
+    flex: 1;
+}
+
+button {
+    background: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #2769a7;
+    color: white;
+}
+
+/* MENSAGEM */
+.mensagem-status {
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* LISTA DE PAÍSES */
+.lista-paises {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+/* CARTÃO DO PAÍS */
+.pais {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 8px #0002;
+    cursor: pointer;
+}
+
+.pais img {
+    width: 100%;
+    height: 145px;
+    object-fit: cover;
+}
+
+.pais__conteudo {
+    padding: 15px;
+}
+
+.pais h2 {
+    color: #17324d;
+}
+
+.pais p {
+    font-size: 14px;
+}
+
+/* ESTATÍSTICAS */
+.estatisticas {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.estatistica {
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+}
+
+.estatistica span {
+    display: block;
+    font-size: 13px;
+    color: #516372;
+}
+
+.estatistica strong {
+    color: #17324d;
+}
+
+/* MODAL */
+.modal-detalhes {
+    width: 90%;
+    max-width: 560px;
+    padding: 25px;
+    border: none;
+    border-radius: 10px;
+}
+
+.modal-detalhes::backdrop {
+    background: #0009;
+}
+
+.modal-detalhes h2 {
+    color: #17324d;
+}
+
+/* CELULAR */
+@media (max-width: 700px) {
+    .estatisticas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
